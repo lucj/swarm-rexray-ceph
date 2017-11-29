@@ -1,0 +1,5 @@
+---
+- name: add metadata server for CephFS
+  shell: ceph-deploy mds create node1
+  args:
+    chdir: ~/cluster

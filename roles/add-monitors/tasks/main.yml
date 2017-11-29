@@ -1,0 +1,8 @@
+---
+- name: add monitors
+  shell: ceph-deploy mon add "{{ item }}"
+  with_items:
+    - "node2"
+    - "node3"
+  args:
+    chdir: ~/cluster

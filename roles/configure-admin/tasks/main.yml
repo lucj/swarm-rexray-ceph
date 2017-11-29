@@ -18,4 +18,8 @@
     state: absent
     path: ~/.ssh/known_hosts
 - name: run ssh-keyscan to add keys to known_hosts
-  shell: ssh-keyscan mon1 osd1 >> ~/.ssh/known_hosts
+  shell: "ssh-keyscan {{ item }} >> ~/.ssh/known_hosts"
+  with_items:
+    - "node1"
+    - "node2"
+    - "node3"

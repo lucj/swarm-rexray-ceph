@@ -1,11 +1,15 @@
-Host admin
+Host adm
         Hostname adm
         User cephuser
  
-Host mon1
-        Hostname mon1
+Host node1
+        Hostname node1
         User cephuser
  
-Host osd1
-        Hostname osd1
+Host node2
+        Hostname node2
+        User cephuser
+ 
+Host node3
+        Hostname node3
         User cephuser

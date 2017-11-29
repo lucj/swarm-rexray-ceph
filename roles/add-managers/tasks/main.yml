@@ -1,0 +1,8 @@
+---
+- name: add managers
+  shell: ceph-deploy mgr create "{{ item }}"
+  with_items:
+    - "node2"
+    - "node3"
+  args:
+    chdir: ~/cluster

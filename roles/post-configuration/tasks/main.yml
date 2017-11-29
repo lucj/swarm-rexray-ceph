@@ -1,5 +1,0 @@
----
-- name: change permission
-  file:
-    path: /etc/ceph/ceph.client.admin.keyring
-    mode: 0644

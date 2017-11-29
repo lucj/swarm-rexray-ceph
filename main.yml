@@ -6,24 +6,24 @@
     - install-modules
     - configure-hosts-file
 
-- name: setup OSDs
-  hosts: osd
-  roles:
-    - configure-osd
-
-- name: setup admin
+- name: setup admin node
   become: yes
   become_user: cephuser
   hosts: admin
   roles:
     - configure-admin
 
-- name: copy admin key
+- name: copy admin key to nodes
   become: yes
   become_user: cephuser
   hosts: mon, osd
   roles:
     - copy-keys
+
+- name: ceph-deploy setup
+  hosts: admin
+  roles:
+    - ceph-deploy-setup
 
 - name: deploy cluster
   become: true
@@ -32,9 +32,4 @@
   become_flags: '-'
   hosts: admin
   roles:
-    - deploy-cluster
-
-- name: post configuration
-  hosts: all
-  roles:
-    - post-configuration
+    - deploy-ceph-cluster

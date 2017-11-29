@@ -1,0 +1,7 @@
+---
+- name: add rgw instance
+  shell: ceph-deploy rgw create "{{ item }}"
+  with_items:
+    - "osd1"
+  args:
+    chdir: ~/cluster
