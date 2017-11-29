@@ -1,0 +1,8 @@
+---
+- name: install modules
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - ntp
+    - python-pip
+    - python3-pip
+    - parted

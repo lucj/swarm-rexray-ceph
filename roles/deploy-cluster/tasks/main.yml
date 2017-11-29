@@ -1,0 +1,38 @@
+---
+- name: install ceph-deploy
+  become: true
+  pip:
+    name: ceph-deploy
+- name: create cluster folder
+  file:
+    path: ~/cluster
+    state: directory
+    mode: 0755 
+- name: create new cluster
+  shell: ceph-deploy new mon1
+  args:
+    chdir: ~/cluster
+- name: install ceph on all nodes
+  shell: ceph-deploy install adm osd1 mon1
+  args:
+    chdir: ~/cluster
+- name: deploy the monitor node
+  shell: ceph-deploy mon create-initial
+  args:
+    chdir: ~/cluster
+- name: delete partition table
+  shell: ceph-deploy disk zap osd1:/dev/sda
+  args:
+    chdir: ~/cluster
+- name: prepare the OSD nodes
+  shell: ceph-deploy osd prepare osd1:/dev/sda
+  args:
+    chdir: ~/cluster
+- name: activation
+  shell: ceph-deploy osd activate osd1:/dev/sda1
+  args:
+    chdir: ~/cluster
+- name: deploy management key
+  shell: ceph-deploy admin adm mon1 osd1
+  args:
+    chdir: ~/cluster

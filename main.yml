@@ -1,0 +1,40 @@
+---
+- name: common configuration
+  hosts: all
+  roles:
+    - create-sudo-user
+    - install-modules
+    - configure-hosts-file
+
+- name: setup OSDs
+  hosts: osd
+  roles:
+    - configure-osd
+
+- name: setup admin
+  become: yes
+  become_user: cephuser
+  hosts: admin
+  roles:
+    - configure-admin
+
+- name: copy admin key
+  become: yes
+  become_user: cephuser
+  hosts: mon, osd
+  roles:
+    - copy-keys
+
+- name: deploy cluster
+  become: true
+  become_method: su
+  become_user: cephuser
+  become_flags: '-'
+  hosts: admin
+  roles:
+    - deploy-cluster
+
+- name: post configuration
+  hosts: all
+  roles:
+    - post-configuration

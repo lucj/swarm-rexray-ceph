@@ -1,0 +1,1 @@
+cephuser ALL=(ALL) NOPASSWD:ALL

@@ -1,0 +1,13 @@
+---
+- name: copy admin key to other hosts
+  become: true
+  become_user: cephuser
+  copy:
+    src: /tmp/id_rsa.pub
+    dest: /tmp/id_rsa.pub
+    mode: 0644
+- name: add admin key in authorized key
+  authorized_key:
+    user: cephuser
+    state: present
+    key: "{{ lookup('file', '/tmp/id_rsa.pub') }}"

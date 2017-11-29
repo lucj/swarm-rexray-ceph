@@ -1,0 +1,11 @@
+Host admin
+        Hostname adm
+        User cephuser
+ 
+Host mon1
+        Hostname mon1
+        User cephuser
+ 
+Host osd1
+        Hostname osd1
+        User cephuser

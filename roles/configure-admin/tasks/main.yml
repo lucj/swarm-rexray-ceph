@@ -1,0 +1,21 @@
+---
+- name: Generate SSH keys
+  shell: ssh-keygen -b 2048 -f /home/cephuser/.ssh/id_rsa -t rsa -q -N "" 
+  args:
+    creates: /home/cephuser/.ssh/id_rsa
+- name: copy public key locally
+  fetch:
+    src: /home/cephuser/.ssh/id_rsa.pub
+    dest: /tmp/
+    flat: yes
+- name: copy ssh configuration
+  copy:
+    src: ssh_config
+    dest: /home/cephuser/.ssh/config
+    mode: 0644
+- name: empty known_hosts
+  file:
+    state: absent
+    path: ~/.ssh/known_hosts
+- name: run ssh-keyscan to add keys to known_hosts
+  shell: ssh-keyscan mon1 osd1 >> ~/.ssh/known_hosts
