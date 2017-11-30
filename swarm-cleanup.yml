@@ -1,0 +1,5 @@
+---
+- name: leave swarm
+  hosts: osd
+  roles:
+    - docker-swarm-leave

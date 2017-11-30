@@ -1,0 +1,4 @@
+---
+- name: configure rex-ray
+  shell: echo "todo"
+  tags: rexray

@@ -1,0 +1,19 @@
+---
+- name: register swarm status
+  shell: docker node ls
+  register: swarm_status
+  ignore_errors: true
+  tags: swarm
+
+- name: init Docker swarm
+  shell: >
+        docker swarm init
+        --advertise-addr={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2377
+  when: swarm_status.rc != 0
+  run_once: true
+  tags: swarm
+
+- name: get manager join token
+  shell: docker swarm join-token --quiet manager
+  register: manager_token
+  tags: swarm

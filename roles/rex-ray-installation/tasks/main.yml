@@ -1,0 +1,6 @@
+---
+- name: install rex-ray
+  shell: curl -sSL https://dl.bintray.com/emccode/rexray/install | sh -s -- stable
+  args:
+    warn: false
+  tags: rexray

@@ -33,3 +33,24 @@
   hosts: admin
   roles:
     - deploy-ceph-cluster
+
+- name: install REX-Ray
+  hosts: osd
+  roles:
+    - rex-ray-installation
+    - rex-ray-configuration
+
+- name: install Docker
+  hosts: osd
+  roles:
+    - docker-installation
+
+- name: init Docker swarm
+  hosts: node1
+  roles:
+    - docker-swarm-init
+
+- name: add managers
+  hosts: node2, node3 
+  roles:
+    - docker-swarm-add-manager
