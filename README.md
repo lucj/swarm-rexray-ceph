@@ -12,7 +12,7 @@ In this first version, I've only tested with DigitalOcean droplets:
 * one manager used to deploy a Ceph cluster
 * three nodes participating to the Ceph cluster and running Docker swarm
 
-> On each of the 3 nodes, an additonal DigitalOcean volume has been added. The 3 volumes will be used by Ceph
+> On each of the 3 nodes, an additonal DigitalOcean volume has been added. The 3 volumes will be used by Ceph and available by default as */dev/sda* drive.
 
 3. Modify your local /etc/hosts to define the following machine:
 * adm
