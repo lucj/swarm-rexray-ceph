@@ -1,2 +1,4 @@
 *.swp
 *.retry
+infrastructure/terraform.*
+infrastructure/.terraform/
