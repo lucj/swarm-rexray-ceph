@@ -128,10 +128,10 @@ TODO: Add examples using Docker volumes...
 
 WIP: This project is very early stage, a lot of things to be done...
 
-[ ] setup examples
-[ ] tests... a lot
-[ ] add terraform file for AWS
-[ ] ... you name it
+- [ ] setup examples
+- [ ] tests... a lot
+- [ ] add terraform file for AWS
+- [ ] ... you name it
 
 Any feedback is welcome
 
