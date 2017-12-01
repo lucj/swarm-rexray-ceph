@@ -1,4 +1,12 @@
 ---
 - name: configure rex-ray
-  shell: echo "todo"
+  copy:
+    src: config.yml
+    dest: /etc/rexray/config.yml 
+    mode: 0644
+  tags: rexray
+- name: restart service
+  service:
+    name: rexray
+    state: restarted
   tags: rexray

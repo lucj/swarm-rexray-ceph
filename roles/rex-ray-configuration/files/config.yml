@@ -1,0 +1,8 @@
+libstorage:
+  service: rbd
+  server:
+    services:
+      rbd:
+        driver: rbd
+        rbd:
+          defaultPool: rbd
