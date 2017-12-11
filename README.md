@@ -40,10 +40,10 @@ Once the *plan* step is ok, let's *apply* the configuration and deploy the infra
 ```
 $ terraform apply
 var.do_key_id
-  Enter a value: 867702
+  Enter a value: xxxxxx
 
 var.do_token
-  Enter a value: fdefc3e48abeb8bb317f044af3bceedce4a73ece9fb4733da807ad9200e8b7af
+  Enter a value: yyyyyyyyyyyyyyyyyyyyyyyyy
 
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
